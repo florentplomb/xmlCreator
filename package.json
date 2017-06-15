@@ -38,7 +38,8 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "karma start test\\karma.conf.js"
+    "test": "karma start test\\karma.conf.js", 
+    "start": "node app.js"
   },
   "dependencies": {
     "angular-drag-and-drop-lists": "^2.1.0",
