@@ -1,0 +1,398 @@
+﻿<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://DeploymentTool.com/Configuration" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="DynamicDeploymentConfiguration" type="con:DynamicDeploymentConfigurationType" xmlns:con="http://DeploymentTool.com/Configuration"/>
+  <xs:complexType name="LanguageType">
+    <xs:simpleContent>
+      <xs:annotation>
+        <xs:documentation>Language to activate</xs:documentation>
+      </xs:annotation>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:short" name="LCD" use="required">
+          <xs:annotation>
+            <xs:documentation>Language code (ENG = 1033, FR = 1036, etc.)</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="StepType">
+    <xs:annotation>
+      <xs:documentation>
+        A step is composed of one or several sub-components depending on its type. 
+        \nPlease refer to the type attribute for more information concerning each possibility available.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element type="con:LanguageType" name="Language" maxOccurs="unbounded" minOccurs="0" xmlns:con="http://DeploymentTool.com/Configuration"/>
+      <xs:element type="con:PropertyType" name="Property" maxOccurs="unbounded" minOccurs="0" xmlns:con="http://DeploymentTool.com/Configuration"/>
+      <xs:element type="con:UserType" name="User" maxOccurs="unbounded" minOccurs="0" xmlns:con="http://DeploymentTool.com/Configuration"/>
+      <xs:element type="con:TeamType" name="Team" maxOccurs="unbounded" minOccurs="0" xmlns:con="http://DeploymentTool.com/Configuration"/>
+      <xs:element type="xs:string" name="PluginStep" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="xs:string" name="Solution" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="xs:string" name="BusinessProcessFlow" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="con:EntityType" name="Entity" maxOccurs="unbounded" minOccurs="0" xmlns:con="http://DeploymentTool.com/Configuration"/>
+      <xs:element type="con:OptionSetType" name="OptionSet" maxOccurs="unbounded" minOccurs="0" xmlns:con="http://DeploymentTool.com/Configuration"/>
+      <xs:element type="xs:string" name="Worklow" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="con:DataRecoveryType" name="DataRecovery" maxOccurs="unbounded" minOccurs="0" xmlns:con="http://DeploymentTool.com/Configuration"/>
+      <xs:element type="xs:string" name="Relationship" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="xs:string" name="DuplicateRule" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="xs:string" name="Dashboard" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="xs:string" name="ProcessName" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="order" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:short">
+          <xs:minInclusive value="0"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="type" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="activateLanguages">
+            <xs:annotation>
+              <xs:documentation>
+                
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="updateOrganizationProperties">
+            <xs:annotation>
+              <xs:documentation>
+
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="associateUserAndRoles">
+            <xs:annotation>
+              <xs:documentation>
+
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="associateTeamAndRoles">
+            <xs:annotation>
+              <xs:documentation>
+
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="activatePluginSteps">
+            <xs:annotation>
+              <xs:documentation>
+
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="deactivateBusinessProcessFlow">
+            <xs:annotation>
+              <xs:documentation>
+
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="deleteChart">
+            <xs:annotation>
+              <xs:documentation>
+
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="activateWorkflow">
+            <xs:annotation>
+              <xs:documentation>
+
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="deleteField">
+            <xs:annotation>
+              <xs:documentation>
+
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="dataRecovery">
+            <xs:annotation>
+              <xs:documentation>
+
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="deleteRelationship">
+            <xs:annotation>
+              <xs:documentation>
+
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="deactivateView">
+            <xs:annotation>
+              <xs:documentation>
+
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="activateDuplicateRule">
+            <xs:annotation>
+              <xs:documentation>
+
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="deleteDashboard">
+            <xs:annotation>
+              <xs:documentation>
+
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="publishCustomization">
+            <xs:annotation>
+              <xs:documentation>
+
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="importSolution">
+            <xs:annotation>
+              <xs:documentation>
+
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="deleteOptionSetValue">
+            <xs:annotation>
+              <xs:documentation>
+
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="deleteProcess">
+            <xs:annotation>
+              <xs:documentation>
+
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="errorBehavior" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="continue">
+            <xs:annotation>
+              <xs:documentation>
+
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="stop">
+            <xs:annotation>
+              <xs:documentation>
+
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="PropertyType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="name" use="required">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:whiteSpace value="collapse"/>
+              <xs:minLength value="1"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="datatype" use="required">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="string"/>
+              <xs:enumeration value="int"/>
+              <xs:enumeration value="float"/>
+              <xs:enumeration value="boolean"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="value" use="required">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:whiteSpace value="collapse"/>
+              <xs:minLength value="1"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="StepsType">
+    <xs:sequence>
+      <xs:element type="con:StepType" name="Step" maxOccurs="unbounded" minOccurs="0" xmlns:con="http://DeploymentTool.com/Configuration"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InitializeCustomExtensionType">
+    <xs:sequence>
+      <xs:element type="con:StepsType" name="Steps" xmlns:con="http://DeploymentTool.com/Configuration"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UserType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="Role" maxOccurs="unbounded" minOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="login" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:whiteSpace value="collapse"/>
+          <xs:minLength value="1"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="TeamType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="Role" maxOccurs="unbounded" minOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="name" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:whiteSpace value="collapse"/>
+          <xs:minLength value="1"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="BeforeImportStageType">
+    <xs:sequence>
+      <xs:element type="con:StepsType" name="Steps" xmlns:con="http://DeploymentTool.com/Configuration"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OptionSetType">
+    <xs:sequence>
+      <xs:element type="xs:int" name="Value" maxOccurs="unbounded" minOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="type" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="local">
+            <xs:annotation>
+              <xs:documentation>
+
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="global">
+            <xs:annotation>
+              <xs:documentation>
+
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  <xs:attribute name="name" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:whiteSpace value="collapse"/>
+          <xs:minLength value="1"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="EntityType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="Chart" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="xs:string" name="Field" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="xs:string" name="View" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="name" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:whiteSpace value="collapse"/>
+          <xs:minLength value="1"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="BeforeApplicationRecordImportType">
+    <xs:sequence>
+      <xs:element type="con:StepsType" name="Steps" xmlns:con="http://DeploymentTool.com/Configuration"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DataRecoveryType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="WorkflowName" use="required">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:whiteSpace value="collapse"/>
+              <xs:minLength value="1"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="RunSolutionUpgradeMigrationStepType">
+    <xs:sequence>
+      <xs:element type="con:StepsType" name="Steps" xmlns:con="http://DeploymentTool.com/Configuration"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AfterPrimaryImportType">
+    <xs:sequence>
+      <xs:element type="con:StepsType" name="Steps" xmlns:con="http://DeploymentTool.com/Configuration"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DynamicDeploymentConfigurationType">
+    <xs:sequence>
+      <xs:element type="con:InitializeCustomExtensionType" name="InitializeCustomExtension" xmlns:con="http://DeploymentTool.com/Configuration"/>
+      <xs:element type="con:BeforeImportStageType" name="BeforeImportStage" xmlns:con="http://DeploymentTool.com/Configuration"/>
+      <xs:element type="con:BeforeApplicationRecordImportType" name="BeforeApplicationRecordImport" xmlns:con="http://DeploymentTool.com/Configuration"/>
+      <xs:element type="con:RunSolutionUpgradeMigrationStepType" name="RunSolutionUpgradeMigrationStep" xmlns:con="http://DeploymentTool.com/Configuration"/>
+      <xs:element type="con:AfterPrimaryImportType" name="AfterPrimaryImport" xmlns:con="http://DeploymentTool.com/Configuration"/>
+    </xs:sequence>
+    <xs:attribute name="ReactivateExistingDuplicateRule" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Y"/>
+          <xs:enumeration value="N"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="LogLevel" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="info"/>
+          <xs:enumeration value="warning"/>
+          <xs:enumeration value="error"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="LogMethod" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="dynamic">
+            <xs:annotation>
+              <xs:documentation>
+
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="static">
+            <xs:annotation>
+              <xs:documentation>
+
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="LogDirectory" use="optional"/>
+  </xs:complexType>
+</xs:schema>

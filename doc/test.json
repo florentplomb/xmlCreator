@@ -1,0 +1,150 @@
+{
+  "DynamicDeploymentConfiguration": {
+    "InitializeCustomExtension": {
+      "Steps": {
+        "Step": {
+          "Solution": "PreImportSolution_1_0_0_0.zip",
+          "_order": "10",
+          "_type": "importSolution",
+          "_errorBehavior": "stop"
+        }
+      }
+    },
+    "BeforeImportStage": {
+      "Steps": ""
+    },
+    "BeforeApplicationRecordImport": {
+      "Steps": ""
+    },
+    "RunSolutionUpgradeMigrationStep": {
+      "Steps": ""
+    },
+    "AfterPrimaryImport": {
+      "Steps": {
+        "Step": [
+          {
+            "DataRecovery": {
+              "_FetchCount": "200",
+              "_WorkflowName": "DataRecoveryWF",
+              "__cdata": "\n            <fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"false\">\n              <entity name=\"new_test\">\n                <attribute name=\"new_testid\" />\n              </entity>\n            </fetch>\n          "
+            },
+            "_order": "1",
+            "_type": "dataRecovery",
+            "_errorBehavior": "stop"
+          },
+          {
+            "OptionSet": [
+              {
+                "Value": "100000000",
+                "_type": "local",
+                "_name": "new_localoptionset"
+              },
+              {
+                "Value": [
+                  "100000001",
+                  "100000002"
+                ],
+                "_type": "global",
+                "_name": "new_globaloptionset"
+              }
+            ],
+            "_order": "10",
+            "_type": "deleteOptionSetValue",
+            "_errorBehavior": "continue"
+          },
+          {
+            "Dashboard": "Dashboard1",
+            "_order": "50",
+            "_type": "deleteDashboard",
+            "_errorBehavior": "stop"
+          },
+          {
+            "Entity": {
+              "Chart": "ChartTest1",
+              "_name": "new_test"
+            },
+            "_order": "20",
+            "_type": "deleteChart",
+            "_errorBehavior": "continue"
+          },
+          {
+            "Entity": {
+              "Field": "new_fieldtodelete",
+              "_name": "new_test"
+            },
+            "_order": "30",
+            "_type": "deleteField",
+            "_errorBehavior": "continue"
+          },
+          {
+            "Worklow": "Process1",
+            "_order": "40",
+            "_type": "activateWorkflow",
+            "_errorBehavior": "continue"
+          },
+          {
+            "Worklow": "Process2",
+            "_order": "0",
+            "_type": "deleteProcess",
+            "_errorBehavior": "continue"
+          },
+          {
+            "Entity": {
+              "View": "View1",
+              "_name": "new_test"
+            },
+            "_order": "60",
+            "_type": "deactivateView",
+            "_errorBehavior": "continue"
+          },
+          {
+            "Relationship": "new_new_test_new_test2",
+            "_order": "61",
+            "_type": "deleteRelationship",
+            "_errorBehavior": "continue"
+          },
+          {
+            "BusinessProcessFlow": "TestBPF",
+            "_order": "62",
+            "_type": "deactivateBusinessProcessFlow",
+            "_errorBehavior": "continue"
+          },
+          {
+            "DuplicateRule": "Contacts with the same business phone number",
+            "_order": "70",
+            "_type": "activateDuplicateRule",
+            "_errorBehavior": "continue"
+          },
+          {
+            "Entity": {
+              "Field": "new_name",
+              "_name": "new_test"
+            },
+            "_order": "100",
+            "_type": "deleteField",
+            "_errorBehavior": "continue"
+          },
+          {
+            "_order": "101",
+            "_type": "publishCustomization",
+            "_errorBehavior": "continue"
+          },
+          {
+            "Entity": {
+              "Field": "new_name",
+              "_name": "new_test"
+            },
+            "_order": "110",
+            "_type": "deleteField",
+            "_errorBehavior": "stop"
+          }
+        ]
+      }
+    },
+    "_xmlns": "http://DeploymentTool.com/Configuration",
+    "_ReactivateExistingDuplicateRule": "true",
+    "_LogLevel": "info",
+    "_LogMethod": "dynamic",
+    "_CloseConnections": "false"
+  }
+}

@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DynamicDeploymentConfiguration ReactivateExistingDuplicateRule="true" LogLevel="info" LogMethod="dynamic" CloseConnections="false" xmlns="http://DeploymentTool.com/Configuration">
+  <InitializeCustomExtension>
+    <Steps>
+      <Step order="10" type="importSolution" errorBehavior="stop">
+        <Solution>PreImportSolution_1_0_0_0.zip</Solution>
+      </Step>
+    </Steps>
+  </InitializeCustomExtension>
+  <BeforeImportStage>
+    <Steps>
+
+    </Steps>
+  </BeforeImportStage>
+  <BeforeApplicationRecordImport>
+    <Steps>
+
+    </Steps>
+  </BeforeApplicationRecordImport>
+  <RunSolutionUpgradeMigrationStep>
+    <Steps>
+
+    </Steps>
+  </RunSolutionUpgradeMigrationStep>
+  <AfterPrimaryImport>
+    <Steps>
+      <Step order="1" type="dataRecovery" errorBehavior="stop">
+        <DataRecovery FetchCount="200" WorkflowName="DataRecoveryWF">
+          <![CDATA[
+            <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+              <entity name="new_test">
+                <attribute name="new_testid" />
+              </entity>
+            </fetch>
+          ]]>
+        </DataRecovery>
+      </Step>
+      <Step order="10" type="deleteOptionSetValue" errorBehavior="continue">
+        <OptionSet type="local" name="new_localoptionset">
+          <Value>100000000</Value>
+        </OptionSet>
+        <OptionSet type="global" name="new_globaloptionset">
+          <Value>100000001</Value>
+          <Value>100000002</Value>
+        </OptionSet>
+      </Step>
+      <Step order="50" type="deleteDashboard" errorBehavior="stop">
+        <Dashboard>Dashboard1</Dashboard>
+      </Step>
+      <Step order="20" type="deleteChart" errorBehavior="continue">
+        <Entity name="new_test">
+          <Chart>ChartTest1</Chart>
+        </Entity>
+      </Step>
+      <Step order="30" type="deleteField" errorBehavior="continue">
+        <Entity name="new_test">
+          <Field>new_fieldtodelete</Field>
+        </Entity>
+      </Step>
+      <Step order="40" type="activateWorkflow" errorBehavior="continue">
+        <Worklow>Process1</Worklow>
+      </Step>
+      <Step order="0" type="deleteProcess" errorBehavior="continue">
+        <Worklow>Process2</Worklow>
+      </Step>
+      <Step order="60" type="deactivateView" errorBehavior="continue">
+        <Entity name="new_test">
+          <View>View1</View>
+        </Entity>
+      </Step>
+      <Step order="61" type="deleteRelationship" errorBehavior="continue">
+        <Relationship>new_new_test_new_test2</Relationship>
+      </Step>
+      <Step order="62" type="deactivateBusinessProcessFlow" errorBehavior="continue">
+        <BusinessProcessFlow>TestBPF</BusinessProcessFlow>
+      </Step>
+      <Step order="70" type="activateDuplicateRule" errorBehavior="continue">
+        <DuplicateRule>Contacts with the same business phone number</DuplicateRule>
+      </Step>
+      <Step order="100" type="deleteField" errorBehavior="continue">
+        <Entity name="new_test">
+          <Field>new_name</Field>
+        </Entity>
+      </Step>
+      <Step order="101" type="publishCustomization" errorBehavior="continue"/>
+      <Step order="110" type="deleteField" errorBehavior="stop">
+        <Entity name="new_test">
+          <Field>new_name</Field>
+        </Entity>
+      </Step>
+    </Steps>
+  </AfterPrimaryImport>
+</DynamicDeploymentConfiguration>

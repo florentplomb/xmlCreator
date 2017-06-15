@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DynamicDeploymentConfiguration ReactivateExistingDuplicateRule="Y" LogLevel="info" LogMethod="dynamic" xmlns="http://DeploymentTool.com/Configuration">
+  <InitializeCustomExtension>
+    <Steps>
+      <Step >
+        
+      </Step>
+      <Step order="11" type="activateLanguages" errorBehavior="continue">
+        <Language LCD="1036"/>
+        <Language LCD="1033"/>
+      </Step>
+      <Step order="10" type="updateOrganizationProperties" errorBehavior="continue">
+        <Property name="IsInit" datatype="boolean" value="false"/>
+        <Property name="SQMEnabled" datatype="boolean" value="false"/>
+        <Property name="IsFullTextSearchEnabled" datatype="boolean" value="true"/>
+        <Property name="EnableBingMapsIntegration" datatype="boolean" value="false"/>
+        <Property name="DefaultCountryCode" datatype="string" value="+41"/>
+        <Property name="AllowUsersSeeAppdownloadMessage" datatype="boolean" value="false"/>
+        <Property name="DisableSocialCare" datatype="boolean" value="true"/>
+        <Property name="DisplayNavigationTour" datatype="boolean" value="false"/>
+        <Property name="IsAuditEnabled" datatype="boolean" value="true"/>
+        <Property name="IsUserAccessAuditEnabled" datatype="boolean" value="false"/>
+        <Property name="RequireApprovalForQueueEmail" datatype="boolean" value="false"/>
+        <Property name="RequireApprovalForUserEmail" datatype="boolean" value="false"/>
+        <Property name="EnableSmartMatching" datatype="boolean" value="false"/>
+        <Property name="GenerateAlertsForWarnings" datatype="boolean" value="false"/>
+        <Property name="IsUserAccessAuditEnabled" datatype="boolean" value="true"/>
+      </Step>
+      <!--<Step order="12" type="importSolution" errorBehavior="continue">
+        <Solution>Cleaning1.zip</Solution>
+        <Solution>Cleaning2.zip</Solution>
+      </Step>-->
+    </Steps>
+  </InitializeCustomExtension>
+  <BeforeImportStage>
+    <Steps>
+      <Step order="20" type="associateUserAndRoles" errorBehavior="continue">
+        <User login="loginName1">
+          <Role>RoleName1</Role>
+          <Role>RoleName2</Role>
+          <Role>RoleName3</Role>
+        </User>
+        <User login="loginName2">
+          <Role>RoleName4</Role>
+          <Role>RoleName5</Role>
+          <Role>RoleName6</Role>
+        </User>
+      </Step>
+      <Step order="30" type="associateTeamAndRoles" errorBehavior="continue">
+        <Team name="TeamName">
+          <Role>RoleName1</Role>
+          <Role>RoleName2</Role>
+        </Team>
+        <Team name="TeamName1">
+          <Role>RoleName4</Role>
+          <Role>RoleName5</Role>
+        </Team>
+      </Step>
+    </Steps>
+  </BeforeImportStage>
+  <BeforeApplicationRecordImport>
+    <Steps>
+      
+    </Steps>
+  </BeforeApplicationRecordImport>
+  <RunSolutionUpgradeMigrationStep>
+    <Steps>
+     
+    </Steps>
+  </RunSolutionUpgradeMigrationStep>
+  <AfterPrimaryImport>
+    <Steps>
+      <Step order="40" type="activatePluginSteps" errorBehavior="continue">
+        <PluginStep>PluginStep1</PluginStep>
+        <PluginStep>PluginStep2</PluginStep>
+      </Step>
+      <Step order="50" type="deactivateBusinessProcessFlow" errorBehavior="continue">
+        <BusinessProcessFlow>businessProcessFlow1</BusinessProcessFlow>
+        <BusinessProcessFlow>businessProcessFlow2</BusinessProcessFlow>
+      </Step>
+      <Step order="60" type="deleteChart" errorBehavior="continue">
+        <Entity name="new_test">
+          <Chart>Chart</Chart>
+          <Chart>Chart2</Chart>
+        </Entity>
+        <Entity name="entity2">
+          <Chart>Chart3</Chart>
+          <Chart>Chart4</Chart>
+        </Entity>
+      </Step>
+      <Step order="70" type="activateWorkflow" errorBehavior="continue">
+        <Worklow>Worklow1</Worklow>
+        <Worklow>Worklow2</Worklow>
+      </Step>
+      <Step order="1" type="deleteField" errorBehavior="continue">
+        <Entity name="new_test">
+          <Field>new_plop</Field>
+          <Field>Field2</Field>
+          <Field>Field3</Field>
+        </Entity>
+        <Entity name="entity2">
+          <Field>Field1</Field>
+          <Field>Field2</Field>
+          <Field>Field3</Field>
+        </Entity>
+      </Step>
+      <Step order ="2" type="dataRecovery" errorBehavior="continue">
+        <DataRecovery WorkflowName="workflow1">
+          <![CDATA[
+            fetchXML
+          ]]>
+        </DataRecovery>
+        <DataRecovery WorkflowName="workflow2">
+          <![CDATA[
+            fetchXML
+          ]]>
+        </DataRecovery>
+      </Step>
+      <Step order="3" type="deleteRelationship" errorBehavior="continue">
+        <Relationship>relation1</Relationship>
+        <Relationship>relation2</Relationship>
+        <Relationship>relation3</Relationship>
+      </Step>
+      <Step order="4" type="deactivateView" errorBehavior="continue">
+        <Entity name="new_test">
+          <View>Active Tests</View>
+          <View>View2</View>
+          <View>View3</View>
+        </Entity>
+        <Entity name="entity2">
+          <View>View1</View>
+          <View>View2</View>
+          <View>View3</View>
+        </Entity>
+      </Step>
+      <Step order="110" type="deleteRelationship" errorBehavior="continue">
+        <Relationship>RelationShip1</Relationship>
+        <Relationship>RelationShip2</Relationship>
+      </Step>
+      <Step order="120" type="activateDuplicateRule" errorBehavior="continue">
+        <DuplicateRule>Accounts with the same Account Name</DuplicateRule>
+        <DuplicateRule>Rule2</DuplicateRule>
+      </Step>
+      <Step order ="130" type="deleteDashboard" errorBehavior="continue">
+        <Dashboard>Customer Service Manager Dashboard</Dashboard>
+        <Dashboard>Dashboard2</Dashboard>
+      </Step>
+      <Step order="140" type="activatePluginSteps" errorBehavior="stop">
+        <PluginStep>Plop</PluginStep>
+        <PluginStep>Plop</PluginStep>
+      </Step>
+      <Step order="150" type="publishCustomization" errorBehavior="stop"/>
+      <Step order="160" type="deleteOptionSetValue" errorBehavior="continue">
+        <OptionSet type="local" name="new_picklistfield1">
+          <Value>888888888</Value>
+          <Value>888888888</Value>
+        </OptionSet>
+        <OptionSet type="global" name="new_picklist1">
+          <Value>-888888888</Value>
+          <Value>-888888888</Value>
+        </OptionSet>
+      </Step>
+      <Step order="170" type="deleteProcess" errorBehavior="continue">
+        <ProcessName>Plop1</ProcessName>
+        <ProcessName>Plop2</ProcessName>
+      </Step>
+    </Steps>
+  </AfterPrimaryImport>
+</DynamicDeploymentConfiguration>
