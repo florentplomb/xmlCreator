@@ -35,6 +35,54 @@
     <div class="item">Item {{item.id}}</div>
 </script>
 
+<script type="text/ng-template" id="root.html">
+    <div class="container-element box box-blue">
+        <h3>{{item.type}}</h3>
+        <div class="column" ng-repeat="list in item.columns" ng-include="'list.html'"></div>
+        <div class="clearfix"></div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="DynamicDeploymentConfiguration.html">
+    <div class="container-element box box-blue">
+        <h3>{{item.type}}</h3>
+        <div class="column" ng-repeat="list in item.columns" ng-include="'list.html'"></div>
+        <div class="clearfix"></div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="InitializeCustomExtension.html">
+    <div class="container-element box box-blue">
+        <h3>{{item.type}}</h3>
+        <div class="column" ng-repeat="list in item.columns" ng-include="'list.html'"></div>
+        <div class="clearfix"></div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="Steps.html">
+    <div class="container-element box box-blue">
+        <h3>{{item.type}}</h3>
+        <div class="column" ng-repeat="steps in item.columns" ng-include="'steps.html'"></div>
+        <div class="clearfix"></div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="Step.html">
+    <div class="container-element box box-blue">
+        <h3>{{item.type}}</h3>
+        <div class="column" ng-repeat="list in item.columns" ng-include="'list.html'"></div>
+        <div class="clearfix"></div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="Solution.html">
+    <div class="container-element box box-blue">
+        <h3>{{item.type}}</h3>
+        <div class="column" ng-repeat="list in item.columns" ng-include="'list.html'"></div>
+        <div class="clearfix"></div>
+    </div>
+</script>
+
 
 <!-- Sidebar -->
 <div class="col-md-2">
