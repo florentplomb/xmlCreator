@@ -38,7 +38,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "postinstall": "bower install",
+     "postinstall": "bower cache clean && bower install",
     "test": "karma start test\\karma.conf.js", 
     "start": "node app.js"
   },
