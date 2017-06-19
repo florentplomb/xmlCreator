@@ -30,5 +30,12 @@ angular.module("xmlCreatorApp").controller("XmlcreatorCtrl", function($scope) {
         $scope.modelAsJson = angular.toJson(model, true);
     }, true);
 
+ $scope.dropCallback = function(index, item, type) {
+      
+        console.log('dropped at flo', index,item,type)
+        // Return false here to cancel drop. Return true if you insert the item yourself.
+        return item;
+    };
+
 
 });
