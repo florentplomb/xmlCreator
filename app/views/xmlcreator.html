@@ -51,9 +51,12 @@
 
 <script type="text/ng-template" id="DynamicDeploymentConfiguration.html">
     <div class="container-element box box-blue">
-        <h3>{{item.type}}</h3>
+        <h3>{{item.type}} <div style="background-color: pink" ng-repeat="(at, values) in item.attr">{{at}} : {{values}}</div></h3>  
+
         <div class="column" ng-repeat="list in item.columns" ng-include="'list.html'"></div>
+
         <div class="clearfix"></div>
+
     </div>
 </script>
 
@@ -68,7 +71,7 @@
 <script type="text/ng-template" id="Steps.html">
     <div class="container-element box box-blue">
         <h3>{{item.type}}</h3>
-        <div class="column" ng-repeat="steps in item.columns" ng-include="'steps.html'"></div>
+        <div class="column" ng-repeat="list in item.columns" ng-include="'list.html'"></div>
         <div class="clearfix"></div>
     </div>
 </script>
@@ -106,7 +109,6 @@
                 dnd-effect-allowed="copy"
                 dnd-copied="item.id = item.id + 1"
                 >
-                {{item.allowedTypes}}
                 <button type="button" class="btn btn-default btn-lg">{{item.type}}</button>
             </li>
         </ul>
